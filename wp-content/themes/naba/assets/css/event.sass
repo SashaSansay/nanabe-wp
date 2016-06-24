@@ -1,0 +1,178 @@
+@import 'vars.sass'
+@import 'header.sass'
+@import 'footer.sass'
+@import 'billboard.sass'
+@import 'overall.sass'
+
+$pr: 22em
+
+.event__header
+  background-size: cover
+  background-position: center
+  position: relative
+  color: #fff
+  background-attachment: fixed
+
+.event__header:before
+  content: ''
+  display: block
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  background: rgba(0,0,0,.4)
+  font-weight: 500
+
+.event-header__inner
+  max-width: 1044px
+  padding: 6em 1.5em
+  display: flex
+  position: relative
+  z-index: 5
+  margin: 0 auto  
+
+.event-header__date
+  font-size: 2.625em
+
+.event-header__small-date
+  opacity: .6
+  font-size: 1em
+  margin-bottom: 2.5em
+
+.event-header__info
+  text-align: center
+  padding: 4.6875em 1.25em
+  display: inline-block
+  letter-spacing: 0.01em
+  width: 85%
+
+.event-header__half
+  width: 50%
+
+.event-header__where, .event-header__money
+  font-size: 1.125em
+  position: relative
+  display: inline-block
+
+.event-header__where:before, .event-header__money:before
+  content: ''
+  display: block
+  position: absolute
+  left: -.5em
+  background-size: 100%
+  background-repeat: no-repeat
+  transform: translate(-100%,-50%)
+  top: 50%
+
+.event-header__where:before
+  width: 0.75em
+  height: 1.25em
+  background-image: url(../img/pin.red.svg)
+
+
+.event-header__money:before
+  width: 0.875em
+  height: 1.0625em
+  background-image: url(../img/money.png)
+
+.event-header__money
+  margin-top: .5em
+  margin-bottom: 2em
+
+.event-header__views
+  font-family: $gotham
+  font-size: 0.6875em
+  color: rgba(255,255,255,.6)
+  text-transform: uppercase
+  font-weight: 500
+  letter-spacing: 0.05em
+
+.event-header__half:nth-of-type(2)
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+.eye-container--event-header
+  margin-left: 1em
+
+.event-header__text
+  font-size: 1.3125em
+  line-height: 1.6em
+  letter-spacing: 0.01em
+
+.event-header__title
+  font-size: 2.625em
+  line-height: 1.2
+
+.event-body__inner,.event-body__social,.event-body__comments
+  padding: 2em $pr 2em 1.5em
+  max-width: 1044px
+  margin: 0 auto
+  font-family: $gotham
+  position: relative
+
+h1, h2, h3, h4, h5, h6
+  font-family: $unitSlab
+  letter-spacing: .01em
+
+.img--float-left
+  display: inline-block
+  margin: 0 3em 0 0
+
+.image__title--organizer
+  display: inline-block
+
+.grey
+  color: rgba(35, 34, 34, 0.6)
+  font-size: 0.875em
+  margin-bottom: 1em
+
+.image--organizer
+  margin: 0
+  display: flex
+  justify-content: space-between
+  margin-bottom: 2.5em
+
+.button--social
+  position: relative
+  top: -0.35em
+  margin-right: 1.5em
+
+.event-body__social
+  margin-top: 2.5em
+  margin-bottom: 2.5em
+  padding: 0
+
+.event-body__comments
+  padding: 0
+
+@media screen and (min-width: 1450px)
+  .event-body__inner,.event-header__inner,.event-body__social,.event-body__comments
+    max-width: 1244px
+
+@media screen and (max-width: 840px)
+  .event-body__inner
+    padding: 2em 1.5em 2em 1.5em
+  .event-header__half
+    width: 100%
+  .event-header__inner
+    flex-wrap: wrap
+  .event-header__info
+    width: 100%
+  .event-header__half:nth-of-type(1)
+    margin-bottom: 4em
+  .event-header__title
+    word-wrap: break-word
+  .image--organizer
+    flex-direction: column
+  .img--float-left
+    margin-right: 0
+    margin-bottom: 1.5em
+  .fb-like
+    margin-top: 1em
+    display: block !important
+
+@media screen and (max-width: 375px)
+  .event-header__info
+    padding: 2.6875em 2.25em

@@ -1,0 +1,64 @@
+@import 'vars.sass'
+
+.footer--main
+  display: flex
+  padding: 3em 1.5em
+  background: #181717
+  color: #fff
+  flex-direction: column
+  text-align: center
+  align-items: center
+
+.menu__item--footer
+  font-size: 0.6875em
+  position: relative
+
+.menu--footer
+  margin-top: 3.125em
+  margin-bottom: 2.5em
+
+.menu__item--footer + .menu__item--footer
+  margin-left: 2em
+
+.menu__item--footer + .menu__item--footer:before
+  content: ''
+  display: block
+  width: 3px
+  height: 3px
+  position: absolute
+  background: rgba(255,255,255,.2)
+  border-radius: 50%
+  top: 50%
+  left: -1em
+  transform: translate(-50%,-50%)
+
+.menu__link--footer
+  color: #fff
+  text-transform: uppercase
+
+.footer__info
+  font-family: $gotham
+  font-size: 0.6875em
+  color: rgba(255,255,255,.2)
+  margin-bottom: 2.5em
+  line-height: 1.35
+
+.footer__by
+  color: rgba(255,255,255,.2)
+  font-family: $gotham
+  text-transform: uppercase
+  font-weight: 500
+  font-size: 0.6875em
+
+.footer--main img
+  width: 2.5em
+  height: 3.3em
+
+@media screen and (max-width: 840px)
+  .menu__item--footer+.menu__item--footer
+    margin-left: 0
+    margin-top: 1em
+  .menu__item--footer
+    display: block
+  .menu__item--footer+.menu__item--footer:before
+    display: none

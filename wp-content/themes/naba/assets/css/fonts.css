@@ -1,0 +1,39 @@
+@font-face {
+    font-family: '1';
+    src:    url('../fonts/1l.eot');
+    src:    url('../fonts/1l.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/1l.woff') format('woff'),
+            url('../fonts/1l.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: '1';
+    src:    url('../fonts/1.eot');
+    src:    url('../fonts/1.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/1.woff') format('woff'),
+            url('../fonts/1.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: '2';
+    src:    url('../fonts/2.eot');
+    src:    url('../fonts/2.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/2.woff') format('woff'),
+            url('../fonts/2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: '2';
+    src:    url('../fonts/2m.eot');
+    src:    url('../fonts/2m.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/2m.woff') format('woff'),
+            url('../fonts/2m.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}

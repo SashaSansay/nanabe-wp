@@ -1,0 +1,147 @@
+@import 'vars.sass'
+
+.header__inner
+  width: 100%
+  max-width: 1200px
+  margin: 0 auto
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 1.3em 0
+  position: relative
+
+header
+  background: #fff
+
+.menu__item
+  display: inline-block
+  font-family: $gotham
+  font-weight: 500
+  text-transform: uppercase
+  font-size: .85em
+  letter-spacing: .05em
+
+.menu--right
+  text-align: right
+
+.menu--left .menu__item
+  margin-right: 4.1vw
+
+.menu--left .menu__item:last-of-type
+  margin-right: 5.5vw
+
+.menu--left
+  text-align: left
+
+.menu--right .menu__item
+  margin-left: 4.1vw
+
+.menu--right .menu__item:first-of-type
+  margin-left: 5.5vw
+
+
+.logo__img
+  width: 8.3em
+  height: 3.8357em
+  position: relative
+  top: 3px
+
+.logo
+  line-height: 0
+
+.rek__inner
+  max-width: 1200px
+  width: 100%
+  padding: 10px 0
+  margin: 0 auto
+
+.rek__img
+  width: 100%
+  display: block
+
+.hamburger
+  display: none
+  padding: 0
+  position: absolute
+  right: 0
+  top: 53%
+  transform: translate(0,-50%)
+
+.hamburger-inner, .hamburger-inner:after, .hamburger-inner:before
+  width: 1.5em
+  height: 1px
+
+.hamburger-inner:before
+  top: -5px
+
+.hamburger-inner:after
+  bottom: -5px
+
+.hamburger-box
+  width: 1.5em
+  height: 14px
+  display: block
+
+html
+  background: #232222
+
+.offcanvas
+  background: #232222
+  position: fixed
+  left: 100%
+  top: 0
+  transition: all .4s ease
+  width: 15em
+  z-index: 9
+  padding-top: 2em
+
+.menu--offcanvas .menu__item
+  display: block
+  text-align: center
+  line-height: 3.5
+
+.menu--offcanvas .menu__link
+  color: #fff
+
+body
+  transition: transform .4s ease
+
+.menu__link
+  transition: opacity .15s ease
+
+.menu__link:hover
+  opacity: .6
+
+@media screen and (max-width: 840px)
+  .header__inner
+    flex-wrap: wrap
+  .menu--left,.menu--right
+    width: 100%
+    text-align: center
+  .menu--left .menu__item
+    margin-right: 0
+  .menu--left .menu__item + .menu__item
+    margin-left: 4.1vw
+  .menu--right .menu__item
+    margin-left: 0
+  .menu--right .menu__item + .menu__item
+    margin-left: 4.1vw
+  .menu--right .menu__item:first-of-type
+    margin-left: 0
+  .menu--left .menu__item:last-of-type
+    margin-right: 0
+  .menu--left,.menu--right
+    display: none
+  .hamburger
+    display: block
+  .header__inner
+    justify-content: center
+  .header--main
+    padding: 0 1em
+  body.body--menu-opened
+    transform: translate(-15em, 0)
+
+
+//@media screen and (max-width: 350px)
+//  .header__inner
+//    justify-content: space-between

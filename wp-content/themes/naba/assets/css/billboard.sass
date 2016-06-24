@@ -1,0 +1,250 @@
+
+.billboard__wrap
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  overflow: hidden
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+
+.billboard
+  display: flex
+  flex-wrap: wrap
+
+.billboard__item
+  width: 33.3333%
+  float: left
+  position: relative
+  background: #ececec
+  transition: background .3s ease
+
+.billboard__item--forecast
+  background: #f7f7f7
+
+.billboard__item:before
+  content: ''
+  display: block
+  padding-top: 100%
+
+.billboard__inner
+  margin: 0 auto
+  padding: 0 5em
+
+.billboard__inner--bottom
+  margin-bottom: 8.3%
+
+.billboard__inner--two
+  width: 100%
+  padding-left: 5em
+  padding-right: 2em
+
+.billboard__header
+  width: 100%
+  padding-top: 2em
+  padding-bottom: 2em
+
+.billboard__header--forecast
+  padding-bottom: 2em
+  box-sizing: content-box
+
+.billboard__header--forecast:after
+  content: ''
+  display: block
+  clear: both
+
+.billboard__title
+  text-transform: uppercase
+  font-family: $gotham
+  font-weight: 500
+  font-size: 0.875em
+  letter-spacing: 0.05em
+
+.billboard__subtitle
+  font-family: $unitSlab
+  font-size: 1.125em
+  letter-spacing: 0.01em
+
+.billboard__half
+  height: 50%
+  width: 100%
+  text-align: center
+
+
+.billboard__image-wrap
+  max-height: 50%
+  height: auto
+  width: 100%
+  background-size: cover
+  background-position: center
+  overflow: hidden
+
+.billboard__half-image
+  width: 100%
+
+.billboard__item--half
+  color: #232222
+
+.billboard__item--full
+  color: #fff
+
+.billboard__body
+  height: auto
+  text-align: center
+  width: 100%
+  padding: 2em .5em
+
+
+.billboard__bottom
+  bottom: 8.3%
+  left: 0
+  width: 100%
+  text-align: center
+  text-transform: uppercase
+  font-family: $gotham
+  opacity: .6
+  font-weight: 500
+  position: relative
+  font-size: 0.6111em
+  padding: 1% 0 5%
+
+.billboard__top
+  text-align: center
+  font-size: 0.6111em
+  text-transform: uppercase
+  font-family: $gotham
+  opacity: .6
+  font-weight: 500
+  width: 100%
+
+.billboard__bottom, .billboard__top
+  letter-spacing: 0.05em
+
+.billboard__bottom-link
+  text-transform: uppercase
+  font-family: $gotham
+  font-weight: 500
+  display: block
+
+.billboard__top-wrap
+  padding: 5% 0 1%
+  width: 100%
+
+.billboard__big-title
+  font-size: 1.7777em
+  letter-spacing: 0.01em
+
+.billboard__divider
+  opacity: .6
+
+.billboard__wrap--full
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  text-align: center
+
+.billboard__material-refresh
+  font-size: 0.6111em
+  font-family: $gotham
+  font-weight: 500
+  text-transform: uppercase
+  margin-top: 1em
+
+.billboard__material-refresh span
+  opacity: .4
+
+.billboard__material-refresh:before
+  content: '●'
+  color: #f00000
+
+.billboard__linker
+  display: block
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 0
+  top: 0
+
+.billboard__image-wrap--full
+  position: absolute
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  min-height: 100%
+
+.billboard__full-image
+  min-width: 100%
+  min-height: 100%
+  width: auto
+
+.billboard__image-wrap--full:after
+  content: ''
+  display: block
+  background: rgba(0, 0, 0, 0.3)
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  position: absolute
+
+.billboard__link-title
+  color: inherit
+
+
+.billboard__card-image
+  margin-bottom: 1em
+  max-width: 15vw
+  width: 3.3em
+
+.addd
+  position: absolute
+  right: 0
+  background: #ededed
+  padding: 0.5em
+  top: 3em
+
+.addd img
+  display: block
+
+.billboard__item:nth-of-type(1) .billboard__wrap
+  justify-content: flex-start
+
+.billboard__wrap-link
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  z-index: 6
+  display: block
+
+@media screen and (max-width: 960px)
+  .billboard__item
+    width: 50%
+
+
+@media screen and (max-width: 840px)
+  .billboard__item
+    width: 100%
+  .billboard__item:before
+    display: none
+  .billboard__wrap
+    position: relative
+  .billboard__inner--bottom
+    margin-bottom: 0
+  .billboard__inner
+    padding: 0 3em
+  .billboard__inner--bottom
+    padding: 0 3em
+    width: 100%
+  .map, .billboard__wrap, .billboard__item
+    min-height: 100vw
+  .billboard__image-wrap
+    max-height: 50vw
+  .billboard__image-wrap--full
+    max-height: 100vw

@@ -1,0 +1,1 @@
+<script src="<?=get_template_directory_uri();?>/build/js/font.jquery.min.js"></script>

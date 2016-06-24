@@ -1,0 +1,210 @@
+@import 'vars.sass'
+@import 'header.sass'
+@import 'footer.sass'
+@import 'overall.sass'
+
+.header--society
+  text-align: center
+  background: #f7f7f7
+
+.header__inner--society
+  position: relative
+  padding: 2.3em 0
+  justify-content: space-between
+
+.button--society-top
+  padding-left: 2.3em
+  position: relative
+
+.button--society-top:before
+  content: '+'
+  display: block
+  left: 1em
+  top: 50%
+  transform: translate(0,-50%)
+  position: absolute
+
+.society__wrap
+  width: 100%
+  max-width: 1200px
+  margin: 0 auto
+
+.day-title__small
+  font-size: 0.875em
+  font-family: $gotham
+  text-transform: uppercase
+  font-weight: 500
+  position: relative
+
+.society__day-title
+  letter-spacing: 0.05em
+
+.day-title__big
+  font-size: 1.75em
+  letter-spacing: .01em
+
+.day-title__small:before
+  content: ''
+  display: block
+  width: 1.25em
+  height: 1em
+  position: absolute
+  left: -2em
+  top: 3px
+  background-size: 100%
+  background-repeat: no-repeat
+  transform: translate(-25%,0)
+  background-image: url(../img/events.svg)
+
+.society__day-title,.society__item
+  padding: 3.5em 0
+  border-bottom: 1px solid #eeeeee
+
+.society-item__head,.society-item__footer
+  letter-spacing: 0.05em
+  font-family: $gotham
+  font-weight: 500
+  color: rgba(35, 34, 34, 0.6)
+  text-transform: uppercase
+  font-size: 0.6875em
+
+.spacer
+  height: 1.5em
+  vertical-align: middle
+  width: 1px
+  display: inline-block
+  background: rgba(25, 25, 25, 0.1)
+  margin: 0 1em
+
+.society-item__title
+  margin-top: .5em
+  margin-bottom: .5em
+
+.image
+  margin: 0
+  position: relative
+  overflow: hidden
+
+.image--society
+  float: right
+
+.image--society
+  width: 15em
+  height: 10em
+  margin: 0
+  margin-left: 4em
+
+.image--org
+  width: 2em
+  height: 2em
+  margin-right: 1em
+  border-radius: 50%
+  display: inline-block
+  vertical-align: middle
+  top: -0.2em
+
+.image img
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%,-50%)
+  min-width: 100%
+  min-height: 100%
+
+.section--popup
+  position: fixed
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  background: rgba(255,255,255,.5)
+
+.popup
+  position: absolute
+  width: 27.5em
+  background: #fff
+  border-radius: 5px
+  box-shadow: 0 0 100px rgba(0,0,0,.2)
+  left: 50%
+  top: 50%
+  transform: translate(-50%,-50%)
+  padding: 2em
+
+#the-date
+  width: 49%
+
+.label--file
+  width: 49%
+  display: inline-block
+  overflow: hidden
+  cursor: pointer
+  vertical-align: top
+  min-height: 2em
+  position: relative
+
+#the-file
+  padding: 0.9em 1em
+  opacity: 0
+
+.file-add
+  cursor: pointer
+  display: flex
+  font-size: 0.875em
+  font-family: $gotham
+  position: absolute
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  justify-content: center
+  align-items: center
+
+.icon--skr
+  margin-right: .3em
+
+input[type=text],textarea
+  width: 100%
+  margin-bottom: .4em
+
+textarea
+  margin-bottom: 0
+
+input[type=submit]
+  margin-top: 1.2em
+
+.section--popup
+  opacity: 0
+  visibility: hidden
+  transition: opacity .5s ease, visibility .0s ease .5s
+
+.section--popup.section--opened
+  opacity: 1
+  visibility: visible
+  transition: opacity .5s ease, visibility .0s ease .0s
+
+@media screen and (max-width: 1250px)
+  .society__wrap,.header--society
+    padding: 0 3em
+
+@media screen and (max-width: 800px)
+  .header__inner--society
+    flex-direction: column
+  .dropdown--society
+    order: 3
+    margin-top: .5em
+  .image--society
+    float: none
+    width: 100%
+    margin-left: 0
+    margin-bottom: 2em
+    height: 46vw
+  .society-item__footer
+    line-height: 2.3
+  .button--society-top
+    margin-top: .5em
+
+@media screen and (max-width: 450px)
+  .popup
+    width: 80%
+  .label--file,#the-date
+    width: 100%

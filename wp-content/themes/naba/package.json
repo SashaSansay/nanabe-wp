@@ -1,0 +1,34 @@
+{
+  "name": "NABKA",
+  "version": "1.0.0",
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-concat": "latest",
+    "gulp-csso": "latest",
+    "gulp-image-optimization": "latest",
+    "gulp-myth": "latest",
+    "gulp-sass": "latest",
+    "gulp-rename" : "latest",
+    "gulp-uglify": "latest",
+    "gulp-util"  : "latest",
+    "matter-js" : "latest",
+    "fastclick" : "latest",
+    "hamburgers" : "latest",
+    "malihu-custom-scrollbar-plugin" : "latest",
+    "run-sequence" : "latest"
+  },
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-concat": "latest",
+    "gulp-csso": "latest",
+    "gulp-image-optimization": "latest",
+    "gulp-myth": "latest",
+    "gulp-sass": "latest",
+    "gulp-rename" : "latest",
+    "gulp-uglify": "latest",
+    "matter-js" : "latest"
+  }
+}
