@@ -15,6 +15,16 @@ $(document).ready(function(){
             alert('Не указано изображение фоновое изображение заголовка!');
             return false;
         }
+        if($('[name=naba_is-cycle]:checked').val()==='1'){
+            if(typeof $('[name="naba_cycle-days[]"]:checked').val() === 'undefined'){
+                alert('Не указаны дни недели события!');
+                return false;
+            }
+            if($('[name="naba_time-event"]').val() == ''){
+                alert('Не указано время события!');
+                return false;
+            }
+        }
     });
 
 });
