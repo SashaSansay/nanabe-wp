@@ -1,13 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="14.031" height="22" viewBox="0 0 14.031 22">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #d21137;
-        stroke: #fff;
-        stroke-width: 2px;
-        fill-rule: evenodd;
-      }
-    </style>
-  </defs>
-  <path d="M11.255,2.797 C10.117,1.641 8.604,1.005 6.994,1.005 C5.385,1.005 3.871,1.641 2.733,2.797 C1.220,4.333 0.624,6.594 1.177,8.701 C1.345,9.342 6.130,19.625 6.676,20.795 C6.734,20.921 6.858,21.001 6.994,21.001 C7.131,21.001 7.255,20.921 7.313,20.795 C7.858,19.625 12.642,9.342 12.811,8.702 C13.363,6.595 12.767,4.332 11.255,2.797 Z" class="cls-1"/>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24.9 32" style="enable-background:new 0 0 24.9 32;" xml:space="preserve">
+<title>art-pin</title>
+<path d="M12.5,0h-0.2C5.5,0.1,0,5.7,0,12.5c0,2.8,0.9,5.5,2.7,7.7c2.2,2.8,5.7,5.2,9.6,11.7c0,0.1,0,0.1,0.1,0.1h0
+	c0-0.1,0-0.1,0.1-0.1h0c4-6.6,7.5-8.9,9.7-11.7c1.8-2.2,2.7-4.9,2.7-7.7C24.8,5.7,19.3,0.1,12.5,0z"/>
 </svg>

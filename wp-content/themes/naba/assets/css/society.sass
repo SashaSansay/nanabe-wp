@@ -2,6 +2,7 @@
 @import 'header.sass'
 @import 'footer.sass'
 @import 'overall.sass'
+@import 'popup.sass'
 
 .header--society
   text-align: center
@@ -11,6 +12,9 @@
   position: relative
   padding: 2.3em 0
   justify-content: space-between
+
+.header__inner--events
+  justify-content: center
 
 .button--society-top
   padding-left: 2.3em
@@ -28,6 +32,11 @@
   width: 100%
   max-width: 1200px
   margin: 0 auto
+
+.society__wrap:after
+  content: ''
+  display: block
+  clear: both
 
 .day-title__small
   font-size: 0.875em
@@ -79,6 +88,7 @@
 .society-item__title
   margin-top: .5em
   margin-bottom: .5em
+  word-break: break-word
 
 .image
   margin: 0
@@ -103,6 +113,7 @@
   vertical-align: middle
   top: -0.2em
 
+
 .image img
   position: absolute
   left: 50%
@@ -111,82 +122,22 @@
   min-width: 100%
   min-height: 100%
 
-.section--popup
-  position: fixed
-  left: 0
-  top: 0
-  right: 0
-  bottom: 0
-  background: rgba(255,255,255,.5)
+.society__no-events
+  text-align: center
+  color: #61ba46
+  padding: 7em 0
 
-.popup
-  position: absolute
-  width: 27.5em
-  background: #fff
-  border-radius: 5px
-  box-shadow: 0 0 100px rgba(0,0,0,.2)
-  left: 50%
-  top: 50%
-  transform: translate(-50%,-50%)
-  padding: 2em
-
-#the-date
-  width: 49%
-
-.label--file
-  width: 49%
-  display: inline-block
-  overflow: hidden
-  cursor: pointer
-  vertical-align: top
-  min-height: 2em
-  position: relative
-
-#the-file
-  padding: 0.9em 1em
-  opacity: 0
-
-.file-add
-  cursor: pointer
-  display: flex
-  font-size: 0.875em
+.no-events__title
+  font-size: 1.225em
+  margin-top: .5em
   font-family: $gotham
-  position: absolute
-  left: 0
-  top: 0
-  right: 0
-  bottom: 0
-  justify-content: center
-  align-items: center
+  font-weight: normal
 
-.icon--skr
-  margin-right: .3em
-
-input[type=text],textarea
-  width: 100%
-  margin-bottom: .4em
-
-textarea
-  margin-bottom: 0
-
-input[type=submit]
-  margin-top: 1.2em
-
-.section--popup
-  opacity: 0
-  visibility: hidden
-  transition: opacity .5s ease, visibility .0s ease .5s
-
-.section--popup.section--opened
-  opacity: 1
-  visibility: visible
-  transition: opacity .5s ease, visibility .0s ease .0s
-
-@media screen and (max-width: 1250px)
+@media screen and (max-width: 1280px)
   .society__wrap,.header--society
     padding: 0 3em
 
-@media screen and (max-width: 800px)
+@media screen and (max-width: 840px)
   .header__inner--society
     flex-direction: column
   .dropdown--society

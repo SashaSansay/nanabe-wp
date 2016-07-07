@@ -2,8 +2,8 @@
     <img src="<?=get_template_directory_uri();?>/build/img/logo.small.svg" alt="">
     <ul class="menu menu--footer">
         <li class="menu__item menu__item--footer">
-            <a href="#" class="menu__link menu__link--footer">
-                О проекте
+            <a href="<?=get_permalink(307);?>" class="menu__link menu__link--footer">
+                <?=get_the_title(307);?>
             </a>
         </li>
         <li class="menu__item menu__item--footer">
@@ -21,6 +21,7 @@
         Использование материалов разрешено только с предварительного согласия правообладателей.<br>
         Сайт может содержать контент, не предназначенный для лиц младше 18-ти лет.
     </div>
+    <a href="https://te-st.ru/" target="_blank" class="footer__te-st">Сайт создан при поддержке Теплицы социальных технологий</a>
     <a href="https://roky.rocks" target="_blank" class="footer__by">Site by Roky</a>
 </footer>
 <script>

@@ -12,7 +12,7 @@ get_header('event');
         $cat = get_event_cat($id);
         $colors = get_pallet($id);
         $d = get_society_date($id);
-        $date = DateTime::createFromFormat('Y-m-d H:i',$d);
+        $date = DateTime::createFromFormat(NABA_DATE_FORMAT,$d);
         $price = get_post_meta($id,'naba_price',true);
         $place = get_post_meta($id,'naba_where',true);
         $cal_link = make_google_calendar_link(get_the_title(),$date->getTimestamp(),$date->getTimestamp(), $header_text, $place);

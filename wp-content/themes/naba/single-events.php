@@ -12,8 +12,8 @@ get_header('event');
         $colors = get_pallet($id);
         $d = get_post_meta($id,'naba_date-event',true);
         $d2 = get_post_meta($id,'naba_date-end-event',true);
-        $date = DateTime::createFromFormat('Y-m-d H:i',$d);
-        $date2 = DateTime::createFromFormat('Y-m-d H:i',$d2);
+        $date = DateTime::createFromFormat(NABA_DATE_FORMAT,$d);
+        $date2 = DateTime::createFromFormat(NABA_DATE_FORMAT,$d2);
         $price = get_post_meta($id,'naba_price',true);
         $place = get_post_meta($id,'naba_where',true);
         if(!$d2){

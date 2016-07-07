@@ -4,7 +4,7 @@ window.addEventListener('load', function() {
 
 
 function resize(){
-    vw = $(window).width();
+    var vw = $(window).width();
     $('.image--full').each(function(){
         var img = $('img',$(this));
         img.width(vw);
@@ -13,12 +13,6 @@ function resize(){
 }
 
 $(function(){
-    $('body').flowtype({
-        minimum   : 320,
-        minFont   : 14,
-        maxFont   : 20  ,
-        fontRatio : 80
-    });
 
     var vw = $(window).width();
 
@@ -38,15 +32,32 @@ $(function(){
         }
     });
 
+    $('.page-body__inner a').css('color',icon_color);
+
     $('.scrolltop').click(function(){
         $('html,body').animate({
-            scrollTop: 0
+            scrollTop: $('.page__header').offset().top
         },500)
     })
 
     $('.slider').slick({
         dots: true,
         arrows: true
+    });
+
+    var speech_bottom = '<svg xmlns="http://www.w3.org/2000/svg" width="11.62" height="11.4" viewBox="0 0 11.62 11.4"> <path id="_copy" data-name="» copy" class="cls-1" d="M1547.91,6645.31l4.25-5.61v-0.21l-4.25-5.59-1.52.89,3.54,4.83-3.54,4.83Zm5.85,0,4.25-5.61v-0.21l-4.25-5.59-1.55.89,3.54,4.83-3.54,4.83Z" transform="translate(-1546.38 -6633.91)"/></svg>';
+    var speech_top = '<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 11.6 11.4" style="enable-background:new 0 0 11.6 11.4;" xml:space="preserve"> <path id="_" class="st0" d="M10.1,0L5.9,5.6v0.2l4.3,5.6l1.5-0.9L8.1,5.7l3.5-4.8L10.1,0z M4.3,0L0,5.6v0.2l4.3,5.6l1.6-0.9L2.3,5.7l3.5-4.8L4.3,0z"/></svg>';
+
+    $(".speech__top").each(function(){
+        $(this).html(speech_top);
+    });
+    $(".speech__bottom").each(function(){
+        $(this).html(speech_bottom);
+    });
+
+    $('.speech__top, .speech__bottom').each(function(){
+        $(this).css('background-color',back_color);
+        $(this).css('color',icon_color);
     });
 });
 
@@ -66,17 +77,3 @@ var disqus_config = function () {
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
 })();
-
-(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6&appId=202796623395890";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-
-VK.init({apiId: 5500298, onlyWidgets: true});
-VK.Widgets.Like("vk_like", {type: "button", height: 20});
-VK.Widgets.Like("vk_like1", {type: "button", height: 20});

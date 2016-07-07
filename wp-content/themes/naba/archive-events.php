@@ -10,15 +10,14 @@ $terms = get_terms('society-events',array(
 ));
 $today = new DateTime();
 $today->setTimezone(new DateTimeZone("Europe/Samara"));
-$today->modify('-1 day');
 $args = array(
     'meta_query' => array(
         'relation' => 'AND',
         'date_event'=> array(
             'key' => 'naba_date-event',
-            'type' => 'NUMERIC',
+            'type' => 'DATETIME',
             'compare' => '>=',
-            'value' => $today->format('Y-m-d H:i')
+            'value' => $today->format(NABA_DATE_FORMAT)
         )
     ),
     'orderby' => 'date_event',
@@ -26,14 +25,13 @@ $args = array(
     'post_type' => 'events',
     'posts_per_page' => -1
 );
-$today->modify('+1 day');
 $events = query_posts($args);
 $today->setTime(0,0,0);
 
 $result = array();
 foreach ($events as $post) {
     $d = get_post_meta($post->ID,'naba_date-event',true);
-    $date = DateTime::createFromFormat('Y-m-d H:i',$d);
+    $date = DateTime::createFromFormat(NABA_DATE_FORMAT,$d);
     $date->setTime(0,0,0);
     $id = $date->format('Y-m-d');
     if (isset($result[$id])) {
@@ -57,6 +55,7 @@ foreach ($events as $post) {
             <?php
             foreach($result as $date => $events):
                 $d = DateTime::createFromFormat('Y-m-d',$date);
+//                var_dump($d,$date);
                 $day = get_dates_diff($today,$d);
                 ?>
                 <div class="society__group">
@@ -72,7 +71,7 @@ foreach ($events as $post) {
                     </div>
                     <?php
                     foreach($events as $event):
-                        $eDate = DateTime::createFromFormat('Y-m-d H:i',get_post_meta($event->ID,'naba_date-event',true));
+                        $eDate = DateTime::createFromFormat(NABA_DATE_FORMAT,get_post_meta($event->ID,'naba_date-event',true));
                         $org = get_event_organizer($event->ID);
                         ?>
                         <div class="society__item" style="border-color: #ffcc99">

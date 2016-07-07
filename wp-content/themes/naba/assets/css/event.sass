@@ -46,6 +46,7 @@ $pr: 22em
   display: inline-block
   letter-spacing: 0.01em
   width: 85%
+  transition: background .3s ease
 
 .event-header__half
   width: 50%
@@ -57,24 +58,24 @@ $pr: 22em
 
 .event-header__where:before, .event-header__money:before
   content: ''
-  display: block
-  position: absolute
-  left: -.5em
+  display: inline-block
+  position: relative
   background-size: 100%
   background-repeat: no-repeat
-  transform: translate(-100%,-50%)
-  top: 50%
+  opacity: .2
+  vertical-align: middle
+
 
 .event-header__where:before
-  width: 0.75em
-  height: 1.25em
+  width: 0.55em
+  height: 0.85em
   background-image: url(../img/pin.red.svg)
 
 
 .event-header__money:before
   width: 0.875em
-  height: 1.0625em
-  background-image: url(../img/money.png)
+  height: 0.9625em
+  background-image: url(../img/money.svg)
 
 .event-header__money
   margin-top: .5em
@@ -127,6 +128,7 @@ h1, h2, h3, h4, h5, h6
   color: rgba(35, 34, 34, 0.6)
   font-size: 0.875em
   margin-bottom: 1em
+  display: block
 
 .image--organizer
   margin: 0
@@ -144,8 +146,8 @@ h1, h2, h3, h4, h5, h6
   margin-bottom: 2.5em
   padding: 0
 
-.event-body__comments
-  padding: 0
+.event-body__comments, .event-body__social
+  padding: 0 1.5em
 
 @media screen and (min-width: 1450px)
   .event-body__inner,.event-header__inner,.event-body__social,.event-body__comments

@@ -1,10 +1,44 @@
 $(function(){
-    $('body').flowtype({
-        minimum   : 320,
-        minFont   : 14,
-        maxFont   : 20  ,
-        fontRatio : 80
+
+    var seeds = [
+        23,
+        24,
+        149,
+        160,
+        182,
+        196,
+        211,
+        220,
+        223,
+        262
+    ];
+
+    function genNumbers(nums) {
+        var numbers = [];
+        while (numbers.length < nums) {
+            var newNr = Math.floor(Math.random() * (nums - 0 + 1)) + 0;
+            if (numbers.indexOf(newNr) == -1) {
+                numbers.push(newNr);
+            }
+        }
+        return numbers;
+    }
+
+    var rNum = Math.floor(Math.random() * (seeds.length - 0 + 1)) + 0;
+
+    var items = $('.event-header__info');
+
+    var rand = randomColor({
+        luminosity: 'light',
+        count: items.length+1,
+        seed: seeds[rNum]
     });
+    var nums = genNumbers(items.length);
+
+    for(var i = 0; i < items.length ; i++){
+        items.eq(i).css('background-color',rand[nums[i]]);
+    }
+
 });
 
 var disqus_config = function () {
@@ -19,17 +53,3 @@ var disqus_config = function () {
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
 })();
-
-(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6&appId=202796623395890";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-
-VK.init({apiId: 5500298, onlyWidgets: true});
-VK.Widgets.Like("vk_like", {type: "button", height: 20});
-VK.Widgets.Like("vk_like1", {type: "button", height: 20});

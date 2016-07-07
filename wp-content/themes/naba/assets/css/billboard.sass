@@ -95,7 +95,7 @@
   height: auto
   text-align: center
   width: 100%
-  padding: 2em .5em
+  padding: 2em .75em
 
 
 .billboard__bottom
@@ -181,6 +181,10 @@
   min-width: 100%
   min-height: 100%
   width: auto
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%,-50%)
 
 .billboard__image-wrap--full:after
   content: ''
@@ -196,10 +200,11 @@
   color: inherit
 
 
-.billboard__card-image
-  margin-bottom: 1em
+.billboard__card-image,.billboard__icon-wrap svg
   max-width: 15vw
-  width: 3.3em
+  width: 6.3em
+  min-width: 100px
+
 
 .addd
   position: absolute
@@ -211,7 +216,7 @@
 .addd img
   display: block
 
-.billboard__item:nth-of-type(1) .billboard__wrap
+.billboard__item--forecast .billboard__wrap
   justify-content: flex-start
 
 .billboard__wrap-link

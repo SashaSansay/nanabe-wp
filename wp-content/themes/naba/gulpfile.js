@@ -16,7 +16,8 @@ gulp.task('sass',function(){
         './assets/css/page.sass',
         './assets/css/event.sass',
         './assets/css/map.sass',
-        './assets/css/society.sass'
+        './assets/css/society.sass',
+        './assets/css/ras.sass'
     ])
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
@@ -47,6 +48,8 @@ gulp.task('concatcss',['sass'], function(){
             'node_modules/hamburgers/dist/hamburgers.min.css',
             'node_modules/magnific-popup/dist/magnific-popup.css',
             'node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css',
+            './assets/css/slick.css',
+            './assets/css/slick-theme.css',
             './assets/css/page.css'
         ])
         .pipe(autoprefixer({
@@ -101,6 +104,19 @@ gulp.task('concatcss',['sass'], function(){
         .pipe(concat('production.society.min.css'))
         .pipe(csso())
         .pipe(gulp.dest('./build/css'));
+    gulp.src([
+            './assets/css/normalize.css',
+            './assets/css/fonts.css',
+            'node_modules/hamburgers/dist/hamburgers.min.css',
+            './assets/css/ras.css'
+        ])
+        .pipe(autoprefixer({
+            browsers: ['last 10 versions'],
+            cascade: false
+        }))
+        .pipe(concat('production.ras.min.css'))
+        .pipe(csso())
+        .pipe(gulp.dest('./build/css'));
 });
 gulp.task('copy',function(){
     gulp.src('./assets/fonts/*')
@@ -129,6 +145,11 @@ gulp.task('concatjs',['buildjs'], function(){
     gulp.src([
             'node_modules/jquery/dist/jquery.min.js',
             './assets/js/flowtype.js',
+            './assets/js/font.js'
+        ])
+        .pipe(concat('font.jquery.min.js'))
+        .pipe(gulp.dest('./build/js'));
+    gulp.src([
             //'./assets/js/fittext.js',
             'node_modules/fastclick/lib/fastclick.js',
             'node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js',
@@ -138,16 +159,12 @@ gulp.task('concatjs',['buildjs'], function(){
             './assets/js/vivus.js',
             './assets/js/jquery-ui.min.js',
             './assets/js/hamburger.js',
-            './assets/js/main.min.js',
-            './assets/js/color.js',
-            './assets/js/billboard.color.js'
+            './assets/js/main.min.js'
         ])
         //gulp.src(['./assets/js/jquery-2.1.4.min.js','./assets/js/modernizr-custom.js','./assets/js/main.js'])
         .pipe(concat('production.min.js'))
         .pipe(gulp.dest('./build/js'));
     gulp.src([
-            'node_modules/jquery/dist/jquery.min.js',
-            './assets/js/flowtype.js',
             //'./assets/js/fittext.js',
             'node_modules/fastclick/lib/fastclick.js',
             'node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js',
@@ -157,47 +174,51 @@ gulp.task('concatjs',['buildjs'], function(){
             './assets/js/vivus.js',
             './assets/js/jquery-ui.min.js',
             './assets/js/hamburger.js',
-            './assets/js/main.page.min.js',
-            './assets/js/color.js',
-            './assets/js/billboard.color.js'
+            './assets/js/slick.js',
+            './assets/js/main.page.min.js'
         ])
         //gulp.src(['./assets/js/jquery-2.1.4.min.js','./assets/js/modernizr-custom.js','./assets/js/main.js'])
         .pipe(concat('production.page.min.js'))
         .pipe(gulp.dest('./build/js'))
     gulp.src([
-            'node_modules/jquery/dist/jquery.min.js',
-            './assets/js/flowtype.js',
             //'./assets/js/fittext.js',
             'node_modules/fastclick/lib/fastclick.js',
             './assets/js/jquery-ui.min.js',
             './assets/js/hamburger.js',
-            './assets/js/main.event.min.js',
             './assets/js/color.js',
-            './assets/js/billboard.color.js'
+            './assets/js/main.event.min.js'
         ])
         .pipe(concat('production.event.min.js'))
         .pipe(gulp.dest('./build/js'))
     gulp.src([
-            'node_modules/jquery/dist/jquery.min.js',
-            './assets/js/flowtype.js',
             //'./assets/js/fittext.js',
             'node_modules/fastclick/lib/fastclick.js',
             './assets/js/jquery-ui.min.js',
             './assets/js/hamburger.js',
+            './assets/js/main.map.min.js'
         ])
         .pipe(concat('production.map.min.js'))
         .pipe(gulp.dest('./build/js'))
     gulp.src([
-            'node_modules/jquery/dist/jquery.min.js',
-            './assets/js/flowtype.js',
             //'./assets/js/fittext.js',
             'node_modules/fastclick/lib/fastclick.js',
             './assets/js/jquery-ui.min.js',
             './assets/js/hamburger.js',
+            './assets/js/mask.js',
             './assets/js/main.society.min.js',
             './assets/js/color.js'
         ])
         .pipe(concat('production.society.min.js'))
+        .pipe(gulp.dest('./build/js'))
+    gulp.src([
+            //'./assets/js/fittext.js',
+            'node_modules/fastclick/lib/fastclick.js',
+            './assets/js/jquery-ui.min.js',
+            './assets/js/hamburger.js',
+            './assets/js/mask.js',
+            './assets/js/main.ras.min.js'
+        ])
+        .pipe(concat('production.ras.min.js'))
         .pipe(gulp.dest('./build/js'))
 });
 

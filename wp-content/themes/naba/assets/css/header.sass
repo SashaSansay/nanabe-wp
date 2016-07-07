@@ -12,6 +12,7 @@
 
 header
   background: #fff
+  position: relative
 
 .menu__item
   display: inline-block
@@ -44,7 +45,6 @@ header
   width: 8.3em
   height: 3.8357em
   position: relative
-  top: 3px
 
 .logo
   line-height: 0
@@ -111,6 +111,96 @@ body
 
 .menu__link:hover
   opacity: .6
+  
+
+@keyframes slideup 
+  0% 
+    opacity: 0
+  100% 
+    transform: translateY(-32px)
+    opacity: 1
+
+@keyframes slidedown 
+  0%
+    opacity: 1
+  100%
+    transform: translateY(-5px)
+    transform: scale(0.95)
+    opacity: 0
+    pointer-events: none
+
+@keyframes slideup-close 
+  0%
+    transform: translateY(-32px)
+    opacity: 1
+  100%
+    transform: translateY(0)
+    opacity: 0
+
+@keyframes slidedown-close 
+  0%
+    transform: translateY(-5px)
+    transform: scale(0.95)
+    opacity: 0
+    pointer-events: none
+  100%
+    transform: translateY(0)
+    transform: scale(1)
+    opacity: 1
+    pointer-events: auto
+
+.sec-on .header__inner,.thr-on .header__inner
+  animation: slidedown 0.5s forwards !important
+
+.sec-on .header__second,.thr-on .header__third
+  animation: slideup 0.5s forwards
+
+.sec-off .header__inner,.thr-off .header__inner
+  animation: slidedown-close 0.3s forwards
+
+.sec-off .header__second,.thr-off .header__third
+  animation: slideup-close 0.3s forwards
+
+
+.header__second,.header__third
+  width: 100%
+  margin: 0 auto
+  display: flex
+  align-items: center
+  padding: 1.3em 0
+  position: absolute
+  top: 50px
+  opacity: 0
+  animation-delay: 0.2s
+  pointer-events: none
+  align-content: center
+  justify-content: center
+
+.sec-on .header__second, .thr-on .header__third
+  pointer-events: auto
+
+.header__second .menu__item,.header__third .menu__item
+  margin-right: 4.1vw
+
+.header__second .menu__item:last-child,.header__third .menu__item:last-child
+  margin-right: 0
+
+.menu--left .menu__item
+  margin-right: 4.1vw
+
+.menu--right .menu__item
+  margin-left: 4.1vw
+
+.hamburger.close-sec, .hamburger.close-third
+  display: block
+  position: relative
+  top: 3px
+  transform: none
+  transition: all .4s ease
+
+.hamburger.close-sec:hover,.hamburger.close-third:hover
+  transform: rotate(180deg)
+
 
 @media screen and (max-width: 840px)
   .header__inner
@@ -140,7 +230,10 @@ body
     padding: 0 1em
   body.body--menu-opened
     transform: translate(-15em, 0)
-
+  .header__second,.header__third
+    display: none
+  .sec-on .header__inner,.thr-on .header__inner
+    animation: nine
 
 //@media screen and (max-width: 350px)
 //  .header__inner

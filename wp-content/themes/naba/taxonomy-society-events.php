@@ -22,9 +22,9 @@ $args = array(
     'meta_query' => array(
         'date_event'=> array(
             'key' => 'naba_date-event',
-            'type' => 'NUMERIC',
+            'type' => 'DATETIME',
             'compare' => '>=',
-            'value' => $today->format('Y-m-d H:i')
+            'value' => $today->format(NABA_DATE_FORMAT)
         )
     ),
     'tax_query' => array(
@@ -47,7 +47,7 @@ $cur_term = get_term_by('slug',$term_slug,$tax_slug);
 $result = array();
 foreach ($events as $post) {
     $d = get_society_date($post->ID);
-    $date = DateTime::createFromFormat('Y-m-d H:i',$d);
+    $date = DateTime::createFromFormat(NABA_DATE_FORMAT,$d);
     $date->setTime(0,0,0);
     $id = $date->format('Y-m-d');
     if (isset($result[$id])) {
@@ -108,7 +108,7 @@ foreach ($events as $post) {
                     </div>
                     <?php
                     foreach($events as $event):
-                        $eDate = DateTime::createFromFormat('Y-m-d H:i',get_society_date($event->ID));
+                        $eDate = DateTime::createFromFormat(NABA_DATE_FORMAT,get_society_date($event->ID));
                         $org = get_event_organizer($event->ID);
                         ?>
                         <div class="society__item" style="border-color: #ffcc99">

@@ -12,8 +12,8 @@ google.maps.event.addDomListener(window, 'load', init);
 var map;
 function init() {
     var mapOptions = {
-        center: new google.maps.LatLng(53.206570, 50.111386),
-        zoom: 15,
+        center: new google.maps.LatLng(53.2094506,50.1167126),
+        zoom: 16,
         zoomControl: false,
         zoomControlOptions: {
             style: google.maps.ZoomControlStyle.DEFAULT,
@@ -34,6 +34,7 @@ function init() {
             opened: false,
         },
         mapTypeId: google.maps.MapTypeId.ROADMAP,
+        styles: [{"featureType":"all","elementType":"geometry","stylers":[{"lightness":"26"},{"gamma":"1.14"},{"saturation":"38"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#c7c7c7"}]}]
     }
     var mapElement = document.getElementById('map');
     map = new google.maps.Map(mapElement, mapOptions);
@@ -50,8 +51,10 @@ function init() {
     for (var i = 0; i < pins.length; i++) {
         for(var j = 0; j < pins[i].length; j++){
             var title = pins[i][j][0];
-            if (pins[i][j][1] =='undefined'){ description ='';} else { description = pins[i][j][1];}
-            if (pins[i][j][2] =='undefined'){ telephone ='';} else { telephone = pins[i][j][2];}
+            var time = pins[i][j][1];
+            var price = pins[i][j][2];
+            //if (pins[i][j][1] =='undefined'){ description ='';} else { description = pins[i][j][1];}
+            //if (pins[i][j][2] =='undefined'){ telephone ='';} else { telephone = pins[i][j][2];}
             if (pins[i][j][3] =='undefined'){ email ='';} else { email = pins[i][j][3];}
             if (pins[i][j][4] =='undefined'){ web ='';} else { web = pins[i][j][4];}
             //if (pins[i][j][7] =='undefined'){ markericon ='';} else { markericon = locations[i][7];}
@@ -61,8 +64,8 @@ function init() {
                 position: new google.maps.LatLng(pins[i][j][5], pins[i][j][6]),
                 map: map,
                 title: title,
-                desc: description,
-                tel: telephone,
+                //desc: description,
+                //tel: telephone,
                 email: email,
                 web: web
             });
@@ -70,9 +73,22 @@ function init() {
             marker.jK = j;
             link = '';
 
-            var contentString = '<div id="content">'+
-                '<h2  class="firstHeading">'+title+'</h2>'+
-                '</div>';
+            var contentString = '<div class="popup">'+
+                '<div class="popup__head">'+title+'</div>';
+                contentString += '<div class="popup__inner">';
+            if(time!=''){
+                contentString += 'Время работы:' + '<br>';
+                contentString += time + '<br>';
+            }
+            if(price!=''){
+                if(price=='Бесплатно'){
+                    contentString += '<span class="green">Бесплатно</span>';
+                }else{
+                    contentString += '<span class="yellow">Средний чек: '+price+'</span>'
+                }
+            }
+                contentString += '</div>';
+            contentString +='<div>';
 
             pins[i][j].push(new google.maps.InfoWindow({
                 content: contentString
@@ -83,6 +99,7 @@ function init() {
             marker.addListener('click', function(e) {
                 //console.log(this);
                 $('.map__menu-wrap').addClass('map__menu-wrap--active');
+                $('.section--map').addClass('section--map--active-menu');
                 closeInfoWindows();
                 var pin = pins[this.iK][this.jK];
                 pin[7].open(map, pin[8]);
@@ -101,7 +118,7 @@ function init() {
                 $('.map__title').html(text);
                 $('[data-element]').removeClass('tabs__tab--active');
                 targetObj.addClass('tabs__tab--active');
-                $('.menu__link--inner').removeClass('menu__link--inner-active');
+                $('.menu__link--inner-active').removeClass('menu__link--inner-active');
                 item.addClass('menu__link--inner-active');
                 $('.map__wrap').animate({scrollTop: item.position().top}, 300, 'swing', function(){anim = false;});
 
@@ -123,13 +140,6 @@ function closeInfoWindows(){
 $(function() {
     var vw;
 
-    $('body').flowtype({
-        minimum: 320,
-        minFont: 14,
-        maxFont: 20,
-        fontRatio: 80
-    });
-
     $('.map__zoom--in').click(function(){
         map.setZoom(map.getZoom()+1);
     })
@@ -147,6 +157,15 @@ $(function() {
         $('.map').height(vh-h1-h2);
 
         vw = $(window).innerWidth();
+
+        if(vw<=840){
+            $('.map__menu-wrap').addClass('map__menu-wrap--active');
+            $('.section--map').addClass('section--map--active-menu');
+        }else{
+
+            $('.map__menu-wrap').removeClass('map__menu-wrap--active');
+            $('.section--map').removeClass('section--map--active-menu');
+        }
     }
 
     $(window).resize(function(){
@@ -195,6 +214,7 @@ $(function() {
         $('.menu__item--inner').removeClass('menu__link--inner-active');
 
         $('.map__menu-wrap--active').removeClass('map__menu-wrap--active');
+        $('.section--map').removeClass('section--map--active-menu');
         $(this).addClass('menu__link--inner-active');
         e.preventDefault();
     })
@@ -219,6 +239,7 @@ $(function() {
     $('[href="#[control][map]"]').click(function(e){
 
         $('.map__menu-wrap--active').removeClass('map__menu-wrap--active');
+        $('.section--map').removeClass('section--map--active-menu');
 
         e.preventDefault();
     });
@@ -226,6 +247,7 @@ $(function() {
     $('[href="#[control][info]"]').click(function(e){
 
         $('.map__menu-wrap').addClass('map__menu-wrap--active');
+        $('.section--map').addClass('section--map--active-menu');
 
         e.preventDefault();
     });

@@ -16,7 +16,6 @@ $billboard = query_posts($args);
 
 $today = new DateTime();
 $today->setTimezone(new DateTimeZone("Europe/Samara"));
-$today->modify('-1 day');
 $args = array(
     'meta_query' => array(
         'relation' => 'AND',
@@ -24,7 +23,7 @@ $args = array(
             'key' => 'naba_date-event',
             'type' => 'DATETIME',
             'compare' => '>=',
-            'value' => $today->format('Y-m-d H:i')
+            'value' => $today->format(NABA_DATE_FORMAT)
         )
     ),
     'orderby' => 'date_event',
@@ -32,7 +31,6 @@ $args = array(
     'post_type' => array('events','society'),
     'posts_per_page' => 3
 );
-$today->modify('+1 day');
 $events = query_posts($args);
 $weather = get_option('naba_weather');
 ?>
@@ -68,7 +66,7 @@ $weather = get_option('naba_weather');
                             </div>
                         </div>
                         <div class="forecast__item">
-                            <img src="<?=get_template_directory_uri();?>/build/img/forecast.water.svg" alt="Погода в Самаре" class="forecast__image">
+                            <img src="<?=get_template_directory_uri();?>/build/img/waves.svg" alt="Погода в Самаре" class="forecast__image">
                             <div class="forecast__temp">
                                 <?=$weather['water'];?>
                             </div>
@@ -87,8 +85,8 @@ $weather = get_option('naba_weather');
                             foreach($events as $event):
                                 $date = get_post_meta($event->ID,'naba_date-event',true);
                                 $date2 = get_post_meta($event->ID,'naba_date-end-event',true);
-                                $d = DateTime::createFromFormat('Y-m-d H:i',$date);
-                                $d2 = DateTime::createFromFormat('Y-m-d H:i',$date2);
+                                $d = DateTime::createFromFormat(NABA_DATE_FORMAT,$date);
+                                $d2 = DateTime::createFromFormat(NABA_DATE_FORMAT,$date2);
                                 $greenContent = get_short_day_of_week($d->format('w'));
                                 $greenContent .= " ";
                                 $greenContent .= $d->format('d.m.Y');

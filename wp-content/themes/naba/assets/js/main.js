@@ -44,12 +44,6 @@ $(function(){
         scrollInertia : 0,
         autoHideScrollbar : false
     });
-    $('body').flowtype({
-        minimum   : 320,
-        minFont   : 14,
-        maxFont   : 20  ,
-        fontRatio : 80
-    });
 
     $('.billboard__item').eyes();
 
@@ -59,7 +53,7 @@ $(function(){
 $('.fb-like').attr('data-href',window.location);
 
 
-google.maps.event.addDomListener(window, 'load', init);
+//google.maps.event.addDomListener(window, 'load', init);
 var map;
 function init() {
     var mapOptions = {

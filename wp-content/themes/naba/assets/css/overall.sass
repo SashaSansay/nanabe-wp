@@ -47,6 +47,9 @@ p
   line-height: 1.75
   letter-spacing: 0.01em
 
+p a
+  color: #6d5aff
+
 figure br, figure p
   display: none
 
@@ -135,7 +138,7 @@ figure br, figure p
   background: rgba(35, 34, 34, 0.1)
   color: rgba(35, 34, 34, 0.6)
   border-radius: 50px
-  border: 2px solid rgba(35,35,35,.1)
+  border: 1px solid rgba(35,35,35,.1)
   font-family: $gotham
   font-size: 0.6875em
   font-weight: 500
@@ -145,6 +148,13 @@ figure br, figure p
 
 .button--hollow
   background: rgba(35,34,34,0)
+
+.button--hollow:hover
+  background: #fff
+  border-color: #fff
+
+.button--c-black
+  color: #232222
 
 .button--dropdown
   color: rgba(35, 34, 34, 0.8)
@@ -202,7 +212,7 @@ figure br, figure p
   display: block
   position: absolute
   left: 1.6em
-  top: -0.375em
+  top: -0.275em
   width: 0
   height: 0
   border-style: solid
@@ -221,11 +231,15 @@ figure br, figure p
 
 .dropdown__link
   color: #fff
+  transition: all .15s ease
+
+.dropdown__link:hover
+  opacity: .6
 
 .button--green
   background: #61ba46
   border-color: #61ba46
-  color: rgba(255, 255, 255, 0.8)
+  color: rgba(255, 255, 255, 1)
 
 .button--green:hover
   background: #fff
@@ -294,6 +308,12 @@ figure br, figure p
 .slider
   position: relative
 
+h5
+  margin-bottom: 1em
+
+svg *
+  fill: currentColor
+
 input[type=text],input[type=tel],input[type=date],textarea
   padding: 1.2em 1em
   font-size: 0.875em
@@ -304,6 +324,56 @@ input[type=text],input[type=tel],input[type=date],textarea
 textarea
   max-width: 100%
 
+div.wpcf7-response-output
+  font-family: $gotham
+  margin: 0
+  padding: 0
+  font-size: .7em
+
+div.wpcf7-validation-errors
+  border: none
+  color: #ff0000
+
+div.wpcf7-mail-sent-ok
+  border: none
+  color: #61ba46
+  
+
+.button-group__link
+  text-transform: uppercase
+  color: rgba(35, 34, 34, .6)
+  font-size: 0.6875em
+  border: 1px solid rgba(35, 34, 34, .3)
+  border-radius: 30px
+  font-family: $gotham
+  padding: .2em .6em
+  font-weight: 500
+  display: inline-block
+
+.button-group__link--active
+  background: #324afa
+  border-color: #324afa
+  color: #fff
+
+.button-group__link + .button-group__link
+  margin-left: .5em
+
+.slick-dotted.slick-slider
+  margin-bottom: 3em
+
+.capital
+  text-transform: capitalize
+
+
+.page__body ul li
+  list-style: disc inside
+
+.page__body ul
+  margin-top: 1em
+
+span.wpcf7-not-valid-tip
+  font-family: $gotham
+  font-size: 0.7em
 
 @media screen and (max-width: 1044px)
   .slider

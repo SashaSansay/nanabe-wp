@@ -6,6 +6,12 @@
 
 $pr: 22em
 
+p
+  margin-top: 1em
+
+.section--page-signle
+  background: rgb(247, 247, 247)
+
 .page__header
   background-size: cover
   background-position: center
@@ -13,6 +19,10 @@ $pr: 22em
   color: #fff
   padding-top: 13em
   background-attachment: fixed
+
+.page__header--noimage
+  color: #232222
+  padding-top: 8em
 
 .page__header:before
   content: ''
@@ -23,6 +33,12 @@ $pr: 22em
   top: 0
   bottom: 0
   background: rgba(0,0,0,.4)
+
+.page__header--noimage:before
+  display: none
+
+.page__header--noimage .page-header__bottom
+  color: rgba(35, 34, 34, 0.6)
 
 .page-header__inner
   max-width: 1044px
@@ -84,9 +100,13 @@ $pr: 22em
   font-size: 1em
   line-height: 1.75em
 
+.page-header__icon svg
+  max-width: 15vw
+  width: 8.6em
+  margin-bottom: 1em
+
 figure
-  margin: 0
-  margin-bottom: 3em
+  margin: 2em 0 0
 
 figcaption
   font-size: 0.6em
@@ -103,16 +123,16 @@ figcaption
   display: block
 
 .image--contain
-  margin-right: -$pr
+  margin-right: -$pr+1.5em
 
 .image--half
   display: flex
-  margin-right: -$pr
+  margin-right: -$pr+1.5em
   justify-content: space-between
   margin-top: 2em
 
 .slider
-  margin-right: -$pr
+  margin-right: -$pr+1.5em
   margin-top: 2em
 
 .image--half img
@@ -153,6 +173,20 @@ h4
   font-size: 1.6em
   margin-top: 2em
 
+h5
+  margin-top: 1em
+  margin-bottom: 0
+
+h4 + h5
+  margin-top: 0
+
+p
+  margin-top: 1em
+  margin-bottom: 0
+
+.page-body__inner > *:nth-child(1)
+  margin-top: 0
+
 .image--full img
   width: 100%
   position: absolute
@@ -172,7 +206,6 @@ h4
   height: 23px
   background: url(../img/logo.small.grey.svg)
   background-size: 100%
-  opacity: .4
   position: absolute
   right: 1.5em
   top: 0
@@ -203,6 +236,7 @@ h4
   content: ''
   display: block
   background: url(../img/top.svg)
+  background-repeat: no-repeat
   width: 0.875em
   height: 0.4725em
   background-size: 100%
@@ -222,6 +256,94 @@ h4
   top: 5em
   font-weight: 500
   color: rgba(35,34,34,.4)
+
+.speech
+  padding: 3em 0 3em
+  border-top: 1px solid rgba(35, 34, 34, 0.2)
+  border-bottom: 1px solid rgba(35, 34, 34, 0.2)
+  margin: 4em 0
+  position: relative
+
+.speech__img
+  width: 4.8125em
+  height: 4.8125em
+  position: relative
+  display: block
+  float: left
+  margin: 0 1.6875em 0.9875em 0
+  border-radius: 50%
+  overflow: hidden
+
+.clear
+  display: block
+  clear: both
+
+.speech__img img
+  position: absolute
+  max-height: 100%
+  min-width: 100%
+  height: auto
+  left: 50%
+  top: 50%
+  transform: translate(-50%,-50%)
+
+.speech__big
+  display: block
+  font-family: $unitSlab
+  font-size: 1.5em
+  line-height: 1.1667
+  letter-spacing: 0.01em
+
+.speech__small
+  font-size: 1.125em
+  line-height: 1.5556em
+  font-family: $unitSlab
+  letter-spacing: 0.01em
+
+.speech__big, .speech__small
+  display: block
+
+.speech p
+  display: block
+
+.speech__top,.speech__bottom
+  display: block
+  position: absolute
+  width: 2em
+  height: 2em
+  border-radius: 50%
+  line-height: 2.5em
+  background: #c0e7f7
+  left: 50%
+  transform: translate(-50%,-50%)
+  text-align: center
+
+.speech__top svg,.speech__bottom svg
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%,-50%)
+  width: 30%
+
+.speech__top:after,.speech__bottom:after
+  content: '»'
+  font-size: 1.625em
+  color: #232222
+  font-family: $gotham
+  font-weight: normal
+  position: absolute
+  left: 51%
+  top: 42%
+  transform: translate(-50%,-50%)
+  line-height: 0
+  display: none
+
+.speech__top
+  top: 0
+
+.speech__bottom
+  bottom: 0
+  transform: translate(-50%,50%)
 
 @media screen and (min-width: 1450px)
   .page-body__inner,.page-header__inner,.page-body__social,.page-body__comments

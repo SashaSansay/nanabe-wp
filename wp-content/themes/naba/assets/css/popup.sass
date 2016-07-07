@@ -1,0 +1,82 @@
+@import 'vars.sass'
+/**
+/**popup
+/**
+
+
+.section--popup
+  position: fixed
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  background: rgba(0,0,0,.5)
+
+.popup
+  position: absolute
+  width: 27.5em
+  background: #fff
+  border-radius: 5px
+  box-shadow: 0 0 100px rgba(0,0,0,.2)
+  left: 50%
+  top: 50%
+  transform: translate(-50%,-50%)
+  padding: 2em
+
+#the-date
+  width: 49%
+
+.label--file
+  width: 49%
+  display: inline-block
+  overflow: hidden
+  cursor: pointer
+  vertical-align: top
+  min-height: 2em
+  position: relative
+
+#the-file
+  padding: 0.9em 1em
+  opacity: 0
+
+.file-add
+  cursor: pointer
+  display: flex
+  font-size: 0.775em
+  font-family: $gotham
+  position: absolute
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  justify-content: center
+  align-items: center
+  max-height: 4.1em
+
+.icon--skr
+  margin-right: .3em
+
+input[type=text],textarea
+  width: 100%
+  margin-bottom: .4em
+
+textarea
+  margin-bottom: 0
+
+input[type=submit]
+  margin-top: 1.2em
+
+.section--popup
+  opacity: 0
+  visibility: hidden
+  transition: opacity .5s ease, visibility .0s ease .5s
+  z-index: 99999
+
+.section--popup.section--opened
+  opacity: 1
+  visibility: visible
+  transition: opacity .5s ease, visibility .0s ease .0s
+
+/***
+/**end popup
+/***

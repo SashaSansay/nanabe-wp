@@ -289,4 +289,9 @@ jQuery(function($) {
 			}
 		});
 	})
+
+
+	$('[data-mask]').each(function(){
+		$(this).inputmask({mask: $(this).data('mask')});
+	});
 });

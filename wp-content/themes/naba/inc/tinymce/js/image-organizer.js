@@ -2,12 +2,12 @@
     tinymce.PluginManager.add('image_organizer_plugin', function( editor, url ) {
         var image = '';
         editor.addButton('image_organizer_plugin', {
-            text: 'Изображение организатора',
+            text: 'Добавить организатора',
             icon: 'image',
             onclick: function() {
                 var image = '';
                 editor.windowManager.open( {
-                    title: 'Вставить слайдер',
+                    title: 'Добавить организатора',
                     body: [
                         {
                             type: 'button',
@@ -33,12 +33,12 @@
                         {
                             type: 'textbox',
                             name: 'title',
-                            label: 'Название организатора'
+                            label: 'Имя организатора'
                         },
                         {
                             type: 'textbox',
                             name: 'subline',
-                            label: 'Серая подпись к организатору'
+                            label: 'Описание'
                         },
                         {
                             type: 'textbox',

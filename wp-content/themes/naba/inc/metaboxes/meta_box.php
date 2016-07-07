@@ -39,7 +39,10 @@ function custom_meta_box_field( $field, $meta = null, $repeatable = null ) {
 		case 'tel':
 		case 'email':
 		default:
-			echo '<input type="' . $type . '" name="' . esc_attr( $name ) . '" id="' . esc_attr( $id ) . '" value="' . esc_attr( $meta ) . '" class="regular-text" size="30" />
+			echo '<input ';
+			if(isset($field['mask']))
+				echo 'data-mask="'.$field['mask'].'"';
+		echo' type="' . $type . '" name="' . esc_attr( $name ) . '" id="' . esc_attr( $id ) . '" value="' . esc_attr( $meta ) . '" class="regular-text" size="30" />
 					<br />' . $desc;
 		break;
 		case 'url':
@@ -548,6 +551,8 @@ class Custom_Add_Meta_Box {
 				wp_enqueue_script( 'google_maps_api',"https://maps.googleapis.com/maps/api/js?key=AIzaSyCheN4Tubg-Pe3qf7QwITpCHq9lHH1t658&sensor=false&extension=.js" );
 				wp_enqueue_media();
 			}
+			wp_enqueue_script( 'mask_plugin_2',CUSTOM_METABOXES_DIR . '/js/m.js');
+			wp_enqueue_script( 'mask_plugin',CUSTOM_METABOXES_DIR . '/js/mask.js');
 
 			// css
 			$deps = array();

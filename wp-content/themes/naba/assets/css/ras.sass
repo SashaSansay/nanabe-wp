@@ -1,0 +1,257 @@
+@import 'vars.sass'
+@import 'header.sass'
+@import 'footer.sass'
+@import 'overall.sass'
+@import 'popup.sass'
+
+.header--ras
+  text-align: center
+  background: #f7f7f7
+
+.header__inner--ras
+  position: relative
+  padding: 2.3em 0
+  justify-content: space-between
+
+.header__inner--events
+  justify-content: center
+
+.button--ras-top
+  padding-left: 2.3em
+  position: relative
+
+.button--ras-top:before
+  content: '+'
+  display: block
+  left: 1em
+  top: 50%
+  transform: translate(0,-50%)
+  position: absolute
+
+.ras__wrap
+  width: 100%
+  max-width: 1200px
+  margin: 0 auto
+
+.ras__wrap:after
+  content: ''
+  display: block
+  clear: both
+
+.day-title__small
+  font-size: 0.875em
+  font-family: $gotham
+  text-transform: uppercase
+  font-weight: 500
+  position: relative
+
+.ras__day-title
+  letter-spacing: 0.05em
+
+.day-title__big
+  font-size: 1.75em
+  letter-spacing: .01em
+
+.day-title__small:before
+  content: ''
+  display: block
+  width: 1.25em
+  height: 1em
+  position: absolute
+  left: -2em
+  top: 3px
+  background-size: 100%
+  background-repeat: no-repeat
+  transform: translate(-25%,0)
+  background-image: url(../img/events.svg)
+
+.ras__day-title,.ras__item
+  padding: 3.5em 0
+  //border-bottom: 1px solid #eeeeee
+
+.ras-item__head,.ras-item__footer
+  letter-spacing: 0.05em
+  font-family: $gotham
+  font-weight: 500
+  color: rgba(35, 34, 34, 0.6)
+  text-transform: uppercase
+  font-size: 0.6875em
+
+.spacer
+  height: 1.5em
+  vertical-align: middle
+  width: 1px
+  display: inline-block
+  background: rgba(25, 25, 25, 0.1)
+  margin: 0 1em
+
+.ras-item__title
+  margin-top: .5em
+  margin-bottom: .5em
+  word-break: break-word
+
+.image
+  margin: 0
+  position: relative
+  overflow: hidden
+
+.image--ras
+  float: right
+
+.image--ras
+  width: 15em
+  height: 10em
+  margin: 0
+  margin-left: 4em
+
+.image--org
+  width: 2em
+  height: 2em
+  margin-right: 1em
+  border-radius: 50%
+  display: inline-block
+  vertical-align: middle
+  top: -0.2em
+
+.image img
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%,-50%)
+  min-width: 100%
+  min-height: 100%
+
+.button-group__right
+  opacity: 0
+  pointer-events: none
+
+.ras__title
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%,-50%)
+
+.ras__half
+  width: 50%
+  display: flex
+  flex-direction: column
+  align-items: flex-end
+
+.ras__half:nth-of-type(2)
+  align-items: flex-start
+
+.ras__day
+  font-size: 0.875em
+  letter-spacing: 0.05em
+  margin-bottom: .5em
+  text-transform: uppercase
+  font-family: $gotham
+
+.ras__where
+  font-size: 1.75em
+  letter-spacing: 0.01em
+
+.ras__item
+  text-align: center
+  width: 100%
+
+.ras__item:after
+  content: ''
+  display: block
+  position: absolute
+  width: 100vw
+  left: 0
+  height: 1px
+  background: #eee
+  margin-top: 3.5em
+
+.ras__info
+  font-size: 1.25em
+
+.ras__wrap
+  display: flex
+
+.ras__grey
+  font-size: 0.5em
+  letter-spacing: 0.01em
+  color: rgba(35, 34, 34, 0.6)
+  display: block
+  font-family: $gotham
+  text-transform: uppercase
+  font-weight: 500
+  text-align: left
+
+.ras__info
+  display: flex
+  justify-content: flex-start
+  max-width: 600px
+  margin: 0 auto
+
+.ras__time
+  margin-right: 2.2em
+  width: 40%
+  text-align: right
+
+.ras__text
+  line-height: 1.4
+  position: relative
+  text-align: left
+  width: 60%
+
+.res-text__inner:before
+  content: ''
+  display: block
+  position: absolute
+  width: 0.6em
+  height: 0.9em
+  left: -1.1em
+  top: 0.2em
+  background: url(../img/ras.pin.svg)
+  background-repeat: no-repeat
+  background-size: 100%
+
+.res-text__inner
+  position: relative
+  display: inline-block
+
+.ras__items
+  display: flex
+
+@media screen and (max-width: 1250px)
+  .ras__wrap,.header--ras
+    padding: 0 3em
+
+@media screen and (max-width: 840px)
+  .header__inner--ras
+    flex-direction: column
+  .dropdown--ras
+    order: 3
+    margin-top: .5em
+  .image--ras
+    float: none
+    width: 100%
+    margin-left: 0
+    margin-bottom: 2em
+    height: 46vw
+  .ras-item__footer
+    line-height: 2.3
+  .button--ras-top
+    margin-top: .5em
+  .ras__half
+    width: 100%
+  .ras__items
+    flex-wrap: wrap
+  .ras__title
+    position: relative
+    left: 0
+    top: 0
+    transform: none
+  .ras__item
+    max-width: 100%
+    padding: 3.5em 1em
+
+@media screen and (max-width: 450px)
+  .popup
+    width: 80%
+  .label--file,#the-date
+    width: 100%

@@ -1,5 +1,15 @@
 <?php
+
+define("NABA_DATE_FORMAT", 'Y-m-d H:i');
+
+function v_dump($i){
+    echo '<pre style="display: none;">';
+    var_dump($i);
+    echo '</pre>';
+}
+
 if(is_admin()){
+
 
     require 'inc/metaboxes/meta_box.php';
 
@@ -8,19 +18,19 @@ if(is_admin()){
     $fields = array(
         array(
             'label' => 'Пост на главной',
-            'desc'  => 'Пост в биллборде на главной стринце',
+            'desc'  => 'Пост на главной стринце',
             'id'    => $prefix.'on-main',
             'type'  => 'checkbox'
         ),
         array(
             'label' => 'Пост обновляется',
-            'desc'  => 'Текст под название поста в плитке об обновлении поста',
+            'desc'  => 'Сообщение об обновлении поста',
             'id'    => $prefix.'is-update',
             'type'  => 'checkbox'
         ),
         array(
             'label' => 'Тип поста',
-            'desc'  => 'Вариант отображения поста в биллборде.',
+            'desc'  => 'Вариант отображения поста на главной.',
             'id'    => $prefix.'post-type',
             'type'  => 'select',
             'required' => true,
@@ -53,14 +63,14 @@ if(is_admin()){
         ),
         array(
             'label' => 'Текст в заголовке поста',
-            'desc'  => 'Текст в хедере поста',
+            'desc'  => '',
             'id'    => $prefix.'preview-text',
             'type'  => 'textarea',
             'sanitize' => false
         ),
         array(
-            'label' => 'Текст в подписи в заголовке поста',
-            'desc'  => 'Текст в подписи в хедере поста',
+            'label' => 'Автор статьи и фотограф',
+            'desc'  => '',
             'id'    => $prefix.'subline-text',
             'type'  => 'textarea',
             'sanitize' => false
@@ -333,24 +343,25 @@ if(is_admin()){
             'desc'  => 'Цена события',
             'id'    => $prefix.'price',
             'type'  => 'text',
-            'sanitize' => false
+            'sanitize' => false,
+            'mask' => '99{0,20}₽'
         ),
         array(
             'label' => 'Огранизатор',
-            'desc'  => 'Название организатора',
+            'desc'  => 'Имя организатор',
             'id'    => $prefix.'organizer',
             'type'  => 'text',
             'sanitize' => false
         ),
         array(
-            'label' => 'Изображение внутри события',
-            'desc'  => 'Изображение в заголовке события',
+            'label' => 'Фоновое изображения заголовка',
+            'desc'  => '',
             'id'    => $prefix.'inner-image',
             'type'  => 'image'
         ),
         array(
             'label' => 'Текст в заголовке события',
-            'desc'  => 'Текст в хедере события',
+            'desc'  => '',
             'id'    => $prefix.'preview-text',
             'type'  => 'textarea',
             'sanitize' => false
@@ -390,18 +401,19 @@ if(is_admin()){
             'desc'  => 'Цена события',
             'id'    => $prefix.'price',
             'type'  => 'text',
-            'sanitize' => false
+            'sanitize' => false,
+            'mask' => '99{0,20}₽'
         ),
         array(
             'label' => 'Огранизатор',
-            'desc'  => 'Название организатора',
+            'desc'  => 'Имя организатор',
             'id'    => $prefix.'organizer',
             'type'  => 'text',
             'sanitize' => false
         ),
         array(
-            'label' => 'Изображение внутри события',
-            'desc'  => 'Изображение в заголовке события',
+            'label' => 'Фоновое изображения заголовка',
+            'desc'  => 'Фоновое изображения заголовка',
             'id'    => $prefix.'inner-image',
             'type'  => 'image'
         ),
@@ -430,6 +442,7 @@ if(is_admin()){
             'desc'  => 'Время работы данного места',
             'id'    => $prefix.'time-work',
             'type'  => 'text',
+            'mask' => '99:99-99:99',
             'sanitize' => false
         ),
         array(
@@ -444,6 +457,7 @@ if(is_admin()){
             'desc'  => 'Средний чек в данном месте',
             'id'    => $prefix.'avg-price',
             'type'  => 'text',
+            'mask' => '99{0,20}₽',
             'sanitize' => false
         ),
         array(
@@ -462,7 +476,7 @@ if(is_admin()){
         ),
         array(
             'label' => 'Выберите место на карте',
-            'desc'  => 'Выбор места на карте',
+            'desc'  => 'Вставьте координаты или выберите на карте',
             'id'    => $prefix.'place-pin',
             'type'  => 'places-map',
             'sanitize' => false
@@ -581,7 +595,28 @@ function get_post_icon($id){
     if(!$icon_id){
         return false;
     }
-    return file_get_contents(get_template_directory_uri().'/icons/ico'.$icon_id.'.svg');
+    $icon_tr = get_transient('naba_post-icon_'.$icon_id);
+
+    if($icon_tr === false){
+        $i = file_get_contents(get_template_directory_uri().'/icons/ico'.$icon_id.'.svg');
+        set_transient('naba_post-icon_'.$icon_id,$i, DAY_IN_SECONDS);
+        return $i;
+    }
+
+    return $icon_tr;
+
+}
+
+function get_speech_icon($type){
+    $icon_tr = get_transient('naba_speech-icon_'.$type);
+
+    if($icon_tr === false){
+        $i = file_get_contents(get_template_directory_uri().'/build/img/speech-'.$type.'.svg');
+        set_transient('naba_speech-icon_'.$type,$i, 15 * DAY_IN_SECONDS);
+        return $i;
+    }
+
+    return $icon_tr;
 
 }
 
@@ -612,6 +647,22 @@ function get_post_billboard_cat($id){
             $parent = $term->name;
         }else{
             return $term->name;
+        }
+    }
+    return $parent;
+}
+
+function get_post_cat($id){
+    $terms = wp_get_post_terms( $id, 'category');
+    if(sizeof($terms)==0){
+        return 0;
+    }
+    $parent = 0;
+    foreach($terms as $term){
+        if($term->parent==0){
+            $parent = $term->term_id;
+        }else{
+            return $term->term_id;
         }
     }
     return $parent;
@@ -708,6 +759,7 @@ function get_dates_diff(DateTime $today,DateTime $date){
     $date->setTime(0,0,0);
     $diff = $today->diff($date);
     $diffDays = (integer)$diff->format( "%R%a" );
+
     switch($diffDays){
         case 0 : return 'Сегодня';break;
         case +1 : return 'Завтра';break;
@@ -780,6 +832,12 @@ function remove_menus(){
 
 add_action( 'admin_menu', 'remove_menus' );
 
+
+function RemoveAddMediaButtonsForNonAdmins(){
+   remove_action( 'media_buttons', 'media_buttons' );
+}
+add_action('admin_head', 'RemoveAddMediaButtonsForNonAdmins');
+
 function myformatTinyMCE($in) {
     $in['block_formats'] = "Абзац=p;Заголовок=h4;Заголовок 2=h5";
     return $in;
@@ -794,6 +852,10 @@ function naba_post_tinymce_plugins( $current_screen ) {
     }
     if ( 'society' == $current_screen->post_type || 'events' == $current_screen->post_type){
         require_once 'inc/tinymce/plugins.event.php';
+        require_once 'inc/tinymce/event-sanitizer.php';
+    }
+    if ('map-pins' == $current_screen->post_type){
+        require_once 'inc/tinymce/map-sanitizer.php';
     }
 }
 add_action( 'current_screen', 'naba_post_tinymce_plugins' );
@@ -838,3 +900,5 @@ function wpse8170_loop() {
 require_once 'inc/post.types.php';
 require_once 'inc/ajax.php';
 require_once 'inc/weather.php';
+
+get_weather();

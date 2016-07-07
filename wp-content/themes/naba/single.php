@@ -1,23 +1,24 @@
 <?php
 get_header('page');
 ?>
-<section class="section--page">
-    <?php
-    while ( have_posts() ) : the_post();
-        $id = get_the_id();
-        $colors = get_pallet($id);
-        $header_image = get_header_image_url($id);
-        $views = get_views($id);
-        $header_text = get_post_header_text($id);
-        $subline_text = get_post_subline_text($id);
+<?php
+$id = 0;
+while ( have_posts() ) : the_post();
+    $id = get_the_id();
+    $colors = get_pallet($id);
+    $header_image = get_header_image_url($id);
+    $views = get_views($id);
+    $header_text = get_post_header_text($id);
+    $subline_text = get_post_subline_text($id);
 
-        $icon = get_post_icon($id);
+    $icon = get_post_icon($id);
 
-        update_views($id);
+    update_views($id);
     ?>
+<section class="section--page">
     <div class="page__header<?php if(!$header_image):?> page__header--noimage<?php endif;?>" style="<?php if($header_image):?>background-image: url(<?=$header_image;?>);<?php endif;?>background-color: <?=$colors[0];?>">
-        <div class="page-header__inner">
-            <?php if($icon):?>
+            <div class="page-header__inner">
+            <?php if($icon && !$header_image):?>
                 <span class="page-header__icon" style="color: <?=$colors[1];?>">
                     <?=$icon;?>
                 </span>
@@ -60,10 +61,28 @@ get_header('page');
             <?php comments_template(); ?>
         </div>
     </div>
-    <?php
-    endwhile;
-    ?>
 </section>
+<section class="billboard billboard--recent">
+<?php
+endwhile;
+$cat = get_post_cat($id);
+
+$args = array(
+    'category__in' => array($cat),
+    'post__not_in' => array($id),
+    'post_type' => 'post',
+    'orderby' => 'rand',
+    'posts_per_page' => 3
+);
+$billboard = query_posts($args);
+
+include('billboard.items.php');
+?>
+</section>
+<script>
+    var icon_color = "<?=$colors[1];?>";
+    var back_color = "<?=$colors[0];?>";
+</script>
 <?php
 get_footer('page');
 ?>

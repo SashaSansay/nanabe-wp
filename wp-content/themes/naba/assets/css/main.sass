@@ -3,6 +3,7 @@
 @import 'footer.sass'
 @import 'billboard.sass'
 @import 'overall.sass'
+@import 'popup.sass'
 
 
 .forecast
@@ -15,7 +16,7 @@
 
 .forecast__item:before
   content: ''
-  display: block
+  display: none
   position: absolute
   left: -.5em
   top: 13px
@@ -32,14 +33,16 @@
 
 .forecast__item:nth-of-type(2):before
   background-image: url(../img/forecast.water.svg)
+  background-repeat: no-repeat
   width: 1.5em
   height: 0.9375em
 
 .forecast__image
   position: absolute
-  left: -12px
-  top: 13px
+  left: -.5em
+  top: 17px
   transform: translate(-100%,-50%)
+  max-width: 2.3em
 
 .forecast__temp
   font-size: 1.3125em
@@ -50,6 +53,10 @@
   font-size: 0.8125em
   line-height: 0.9375em
   font-family: $gotham
+  text-transform: lowercase
+
+.forecast__decr:first-letter
+  text-transform: uppercase
 
 
 
@@ -192,25 +199,6 @@
   justify-content: space-between
   align-items: center
 
-.tabs__link
-  text-transform: uppercase
-  color: rgba(35, 34, 34, .6)
-  font-size: 0.6875em
-  border: 1px solid rgba(35, 34, 34, .3)
-  border-radius: 30px
-  font-family: $gotham
-  padding: .2em .6em
-  font-weight: 500
-  display: inline-block
-
-.tabs__link--active
-  background: #324afa
-  border-color: #324afa
-  color: #fff
-
-.tabs__link + .tabs__link
-  margin-left: .5em
-
 .subscribe
   display: flex
   width: 100%
@@ -260,6 +248,9 @@
 
 .billboard__title
   position: relative
+
+.billboard__create-event
+  margin-top: 1em
 
 .on-air-wave
   position: absolute
@@ -316,7 +307,6 @@
   100%
     transform: scale(1)
     opacity: 0
-
 
 
 @media screen and (max-width: 960px)
