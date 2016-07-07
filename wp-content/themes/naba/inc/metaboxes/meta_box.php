@@ -267,7 +267,11 @@ function custom_meta_box_field( $field, $meta = null, $repeatable = null ) {
 		case 'date':
 			echo '<input type="text" class="datetimepicker" name="' . esc_attr( $name ) . '" id="' . esc_attr( $id ) . '" value="' . $meta . '" size="30" />
 					<br />' . $desc;
-		break;
+			break;
+		case 'time':
+			echo '<input type="text" class="datetimepicker timepicker" name="' . esc_attr( $name ) . '" id="' . esc_attr( $id ) . '" value="' . $meta . '" size="30" />
+					<br />' . $desc;
+			break;
 		// slider
 		case 'slider':
 		$value = $meta != '' ? intval( $meta ) : '0';
@@ -597,7 +601,28 @@ class Custom_Add_Meta_Box {
  									 }
  									}
 								});';
-					break;
+						break;
+					case 'time' :
+						echo 'jQuery.datetimepicker.setLocale(\'ru\');';
+						echo '$("#' . $field['id'] . '").datetimepicker({
+								datepicker:false,
+  								format:\'H:i\',
+								lang: \'ru\',
+								 i18n:{
+ 									 ru:{
+ 									  months:[
+ 									   \'Январь\',\'Февраль\',\'Март\',\'Апрель\',
+ 									   \'Май\',\'Июнь\',\'Июль\',\'Август\',
+ 									   \'Сентябрь\',\'Октябрь\',\'Ноябрь\',\'Декабрь\',
+ 									  ],
+ 									  dayOfWeek:[
+ 									   "Вс.", "Пн.", "Вт.", "Ср.",
+ 									   "Чт.", "Пт.", "Сб.",
+ 									  ]
+ 									 }
+ 									}
+								});';
+						break;
 					// slider
 					case 'slider' :
 					$value = get_post_meta( get_the_ID(), $field['id'], true );
